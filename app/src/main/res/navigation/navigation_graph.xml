@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/splashFragment">
+
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.rydot.iotRemote.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_frame1"
+            app:destination="@id/frame1" />
+    </fragment>
+    <fragment
+        android:id="@+id/frame1"
+        android:name="com.rydot.iotRemote.Frame1"
+        android:label="fragment_frame1"
+        tools:layout="@layout/fragment_frame1" >
+        <action
+            android:id="@+id/action_frame1_to_frame2"
+            app:destination="@id/frame2" />
+    </fragment>
+    <fragment
+        android:id="@+id/frame2"
+        android:name="com.rydot.iotRemote.Frame2"
+        android:label="fragment_frame2"
+        tools:layout="@layout/fragment_frame2" />
+</navigation>

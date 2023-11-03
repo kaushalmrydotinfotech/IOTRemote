@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">IOTRemote</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings">Settings</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="wi_fi">Wi-Fi</string>
+    <string name="wired_rs485">Wired RS485</string>
+    <string name="gpio_control">GPIO Control</string>
+    <string name="button">Button</string>
+</resources>

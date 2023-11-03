@@ -1,0 +1,114 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.rydot.iotRemote.Frame1">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtSetting"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/btn_background"
+        android:gravity="center"
+        android:text="@string/settings"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBluetooth"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/btn_shadow_bg"
+        android:elevation="10dp"
+        android:text="@string/bluetooth"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="@id/txtSetting"
+        app:layout_constraintStart_toStartOf="@id/txtSetting"
+        app:layout_constraintTop_toBottomOf="@+id/txtSetting" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnWifi"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/btn_shadow_bg"
+        android:elevation="10dp"
+        android:text="@string/wi_fi"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="@id/btnBluetooth"
+        app:layout_constraintStart_toStartOf="@id/btnBluetooth"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetooth" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnWired"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/btn_shadow_bg"
+        android:elevation="10dp"
+        android:text="@string/wired_rs485"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="@id/btnBluetooth"
+        app:layout_constraintStart_toStartOf="@id/btnBluetooth"
+        app:layout_constraintTop_toBottomOf="@+id/btnWifi" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNext"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/btn_shadow_bg"
+        android:backgroundTint="@color/dark_blue"
+        android:elevation="10dp"
+        android:paddingHorizontal="20dp"
+        android:text="Next"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/txtSetting" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/fbNext"
+        android:elevation="2dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="5dp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/btn_background"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/right_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/btnNext"
+        app:layout_constraintEnd_toEndOf="@id/btnNext"
+        app:layout_constraintTop_toTopOf="@id/btnNext" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

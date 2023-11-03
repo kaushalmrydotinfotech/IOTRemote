@@ -1,0 +1,68 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.rydot.iotRemote.Frame2">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtGpio"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/btn_background"
+        android:gravity="center"
+        android:text="@string/gpio_control"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/layout_bg"
+        app:layout_constraintTop_toBottomOf="@id/txtGpio">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/layout_shadow_bg_left"
+        android:elevation="10dp"
+        android:text="@string/button"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="2dp"
+        android:outlineSpotShadowColor="@color/dark_gray"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/btnLamp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLamp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/layout_shadow_bg_right"
+        android:elevation="10dp"
+        android:text="@string/button"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn"
+        app:layout_constraintTop_toTopOf="@id/btn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
