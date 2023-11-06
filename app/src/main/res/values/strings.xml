@@ -8,4 +8,7 @@
     <string name="wired_rs485">Wired RS485</string>
     <string name="gpio_control">GPIO Control</string>
     <string name="button">Button</string>
+    <string name="writing">Writing</string>
+    <string name="reading">Reading</string>
+    <string name="on">on</string>
 </resources>

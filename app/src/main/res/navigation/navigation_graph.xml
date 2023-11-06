@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.rydot.iotRemote.SplashFragment"
+        android:name="com.rydot.iotRemote.fragment.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/frame1"
-        android:name="com.rydot.iotRemote.Frame1"
+        android:name="com.rydot.iotRemote.fragment.Frame1"
         android:label="fragment_frame1"
         tools:layout="@layout/fragment_frame1" >
         <action
@@ -26,7 +26,21 @@
     </fragment>
     <fragment
         android:id="@+id/frame2"
-        android:name="com.rydot.iotRemote.Frame2"
+        android:name="com.rydot.iotRemote.fragment.Frame2"
         android:label="fragment_frame2"
-        tools:layout="@layout/fragment_frame2" />
+        tools:layout="@layout/fragment_frame2" >
+        <action
+            android:id="@+id/action_frame2_to_frame3"
+            app:destination="@id/frame3" />
+    </fragment>
+    <fragment
+        android:id="@+id/frame3"
+        android:name="com.rydot.iotRemote.fragment.Frame3"
+        android:label="fragment_frame3"
+        tools:layout="@layout/fragment_frame3" >
+        <argument
+            android:name="list"
+            app:argType="string"
+            />
+    </fragment>
 </navigation>
