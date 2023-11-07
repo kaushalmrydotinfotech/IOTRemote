@@ -4,16 +4,23 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <com.rydot.iotRemote.customSwitch.LabeledSwitch
-        android:id="@+id/toggle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/toggleCard"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        app:cardCornerRadius="20dp"
         android:layout_marginTop="10dp"
-        android:text="@string/on"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline"/>
+        app:layout_constraintEnd_toEndOf="@id/guideline">
+        <com.rydot.iotRemote.customSwitch.LabeledSwitch
+            android:id="@+id/toggle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/on" />
+    </androidx.cardview.widget.CardView>
+
+
 
   <androidx.constraintlayout.widget.Guideline
       android:id="@+id/guideline"
@@ -30,6 +37,6 @@
         app:layout_constrainedWidth="true"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toggle" />
+        app:layout_constraintTop_toTopOf="@id/toggleCard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -137,7 +137,7 @@ public class LabeledSwitch extends ToggleableView {
         rightFgArc = new RectF();
         thumbBounds = new RectF();
 
-        this.colorOff = Color.parseColor("#CD4545");
+        this.colorOff = Color.parseColor("#f2879c");
         this.colorDisabled = Color.parseColor("#FF000000");
     }
 
@@ -149,7 +149,7 @@ public class LabeledSwitch extends ToggleableView {
             if (attr == R.styleable.Toggle_on) {
                 isOn = tarr.getBoolean(R.styleable.Toggle_on, false);
             } else if (attr == R.styleable.Toggle_colorOff) {
-                colorOff = tarr.getColor(R.styleable.Toggle_colorOff, Color.parseColor("#CD4545"));
+                colorOff = tarr.getColor(R.styleable.Toggle_colorOff, Color.parseColor("#f2879c"));
             } else if (attr == R.styleable.Toggle_colorBorder) {
                 int accentColor;
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -181,21 +181,19 @@ public class LabeledSwitch extends ToggleableView {
         }
     }
 
-    @SuppressLint("ResourceAsColor")
     @Override protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         paint.setTextSize(textSize);
-        int colorThumb;
         int colorText;
 
         colorText = R.color.black;
-
-        colorThumb = R.color.white;
+        paint.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        paint.setTextSize(40f);
 
 //      Drawing Switch background here
         {
             if(isEnabled()) {
-                paint.setColor(Color.parseColor("#CD4545"));
+                paint.setColor(Color.parseColor("#f2879c"));
             } else {
                 paint.setColor(colorDisabled);
             }
@@ -269,11 +267,6 @@ public class LabeledSwitch extends ToggleableView {
             alpha = (alpha < 0 ? 0 : (alpha > 255 ? 255 : alpha));
             int onColor;
             onColor = Color.argb(alpha, Color.red(colorText), Color.green(colorText), Color.blue(colorText));
-            /*if(isEnabled()) {
-                onColor = Color.argb(alpha, Color.red(colorText), Color.green(colorText), Color.blue(colorText));
-            } else {
-                onColor = Color.argb(alpha, Color.red(colorText), Color.green(colorText), Color.blue(colorText));
-            }*/
             paint.setColor(onColor);
 
             centerX = (width - padding - ((padding + (padding >>> 1)) + (thumbRadii << 1))) >>> 1;
@@ -292,11 +285,6 @@ public class LabeledSwitch extends ToggleableView {
             alpha = (alpha < 0 ? 0 : (alpha > 255 ? 255 : alpha));
             int onColor;
             onColor = Color.argb(alpha, Color.parseColor("#FFFFFFFF"), Color.parseColor("#FFFFFFFF"),Color.parseColor("#FFFFFFFF"));
-          /*  if(isEnabled()) {
-                onColor = Color.argb(alpha, Color.parseColor("#FFFFFFFF"), Color.parseColor("#FFFFFFFF"),Color.parseColor("#FFFFFFFF"));
-            } else {
-                onColor = Color.argb(alpha, Color.parseColor("#FFFFFFFF"), Color.parseColor("#FFFFFFFF"),Color.parseColor("#FFFFFFFF"));
-            }*/
             paint.setColor(onColor);
             canvas.drawCircle(thumbBounds.centerX(), thumbBounds.centerY(), thumbRadii, paint);
         }
@@ -552,7 +540,7 @@ public class LabeledSwitch extends ToggleableView {
      */
     public void setTypeface(Typeface typeface) {
         this.typeface = typeface;
-        paint.setTypeface(typeface);
+        paint.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         invalidate();
     }
 

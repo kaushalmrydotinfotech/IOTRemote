@@ -48,6 +48,7 @@
         android:layout_marginTop="45dp"
         android:background="@drawable/btn_shadow_bg"
         android:elevation="10dp"
+        android:minHeight="40dp"
         android:text="@string/wi_fi"
         android:textAllCaps="false"
         android:textColor="@color/black"
