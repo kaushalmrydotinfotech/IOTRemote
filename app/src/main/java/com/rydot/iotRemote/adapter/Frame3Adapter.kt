@@ -33,7 +33,8 @@ class Frame3Adapter(private var list: ArrayList<SwitchModel>): RecyclerView.Adap
             holder.edtNumber.isEnabled = true
         }
         else{
-            holder.btn.alpha = 0.50F
+            holder.btn.alpha = 0.50f
+            holder.edtNumber.alpha = 0.50f
         }
 
 
