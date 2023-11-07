@@ -13,19 +13,16 @@ import com.rydot.iotRemote.utils.SharedPrefs
 
 
 class Frame1 : Fragment() {
-    lateinit var binding: FragmentFrame1Binding
-    var BTisSelected: String? = null
-    var WFisSelected: String? = null
-    var WIisSelected: String? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private lateinit var binding: FragmentFrame1Binding
+    private var BTisSelected: String? = null
+    private var WFisSelected: String? = null
+    private var WIisSelected: String? = null
 
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentFrame1Binding.inflate(layoutInflater, container, false)
         return binding.root

@@ -19,8 +19,8 @@ import com.rydot.iotRemote.utils.SharedPrefs
 class Frame2 : Fragment() {
     private lateinit var binding: FragmentFrame2Binding
     private lateinit var adapter: Frame2Adapter
-    var updateList:String = ""
-    var editedList:String = ""
+    private var updateList:String = ""
+    private var editedList:String = ""
 
 
 
