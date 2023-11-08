@@ -15,12 +15,13 @@ class SharedPrefs {
             }
         }
 
-        fun setValueBoolean(context: Context, key:String, value:Boolean) {
+        fun setValueBoolean(context: Context, key:String, value:Boolean):Boolean{
             val sharedPref = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
             sharedPref.edit().putBoolean(key, value).apply()
+            return value
         }
 
-        fun getValueBoolean(context: Context, key:String, defaultVal:Boolean):Any {
+        fun getValueBoolean(context: Context, key:String, defaultVal:Boolean):Boolean {
             val sharedPref=context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
             return sharedPref.getBoolean(key, defaultVal)
 

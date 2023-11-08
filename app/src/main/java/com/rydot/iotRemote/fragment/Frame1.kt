@@ -14,9 +14,9 @@ import com.rydot.iotRemote.utils.SharedPrefs
 
 class Frame1 : Fragment() {
     private lateinit var binding: FragmentFrame1Binding
-    private var BTisSelected: String? = null
-    private var WFisSelected: String? = null
-    private var WIisSelected: String? = null
+    private var BTisSelected: Boolean? = null
+    private var WFisSelected: Boolean? = null
+    private var WIisSelected: Boolean? = null
 
 
     override fun onCreateView(
@@ -33,12 +33,12 @@ class Frame1 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         BTisSelected =
-            SharedPrefs.getValueBoolean(requireContext(), "BTisSelected", false).toString()
+            SharedPrefs.getValueBoolean(requireContext(), "BTisSelected", false)
         WFisSelected =
-            SharedPrefs.getValueBoolean(requireContext(), "WFisSelected", false).toString()
+            SharedPrefs.getValueBoolean(requireContext(), "WFisSelected", false)
         WIisSelected =
-            SharedPrefs.getValueBoolean(requireContext(), "WIisSelected", false).toString()
-        isSelected(BTisSelected.toBoolean(),WFisSelected.toBoolean(),WIisSelected.toBoolean())
+            SharedPrefs.getValueBoolean(requireContext(), "WIisSelected", false)
+        isSelected(BTisSelected!!, WFisSelected!!, WIisSelected!!)
 
 
         binding.btnNext.setOnClickListener {
@@ -56,17 +56,17 @@ class Frame1 : Fragment() {
                     requireContext(),
                     "BTisSelected",
                     binding.btnBluetooth.isSelected
-                ).toString()
-                WFisSelected = SharedPrefs.setValue(
+                )
+                WFisSelected = SharedPrefs.setValueBoolean(
                     requireContext(),
                     "WFisSelected",
                     binding.btnWifi.isSelected
-                ).toString()
-                WIisSelected = SharedPrefs.setValue(
+                )
+                WIisSelected = SharedPrefs.setValueBoolean(
                     requireContext(),
                     "WIisSelected",
                     binding.btnWired.isSelected
-                ).toString()
+                )
                 findNavController().navigate(Frame1Directions.actionFrame1ToFrame2())
             }
         }
@@ -78,13 +78,13 @@ class Frame1 : Fragment() {
             binding.btnBluetooth.isSelected = BisSelected
             binding.btnWifi.isSelected = WFBisSelected
             binding.btnWired.isSelected = WIBisSelected
-            if (BisSelected ==  true){
+            if (BisSelected){
                 binding.btnBluetooth.alpha = 0.5F
             }
-            else if (WFBisSelected == true){
+            else if (WFBisSelected){
                 binding.btnWifi.alpha = 0.5F
             }
-            else if (WIBisSelected == true){
+            else if (WIBisSelected){
                 binding.btnWired.alpha = 0.5F
             }
         }
