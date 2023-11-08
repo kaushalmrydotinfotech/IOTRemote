@@ -27,7 +27,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        SharedPrefs.clear(applicationContext)
+        SharedPrefs.remove(applicationContext,"BTisSelected")
+        SharedPrefs.remove(applicationContext,"WFisSelected")
+        SharedPrefs.remove(applicationContext,"WIisSelected")
     }
     override fun onDestroy() {
         super.onDestroy()

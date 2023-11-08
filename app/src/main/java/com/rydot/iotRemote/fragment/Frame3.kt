@@ -34,9 +34,8 @@ private lateinit var adapter: Frame3Adapter
         super.onViewCreated(view, savedInstanceState)
 
         Log.e(javaClass.simpleName, "onViewCreated: "+args.list )
-
         val data: ArrayList<SwitchModel> =
-            Gson().fromJson(args.list, object : TypeToken<List<SwitchModel>>() {}.type)
+            Gson().fromJson(args.list, object : TypeToken<ArrayList<SwitchModel>>() {}.type)
 
         adapter = Frame3Adapter(data)
         binding.recycler.adapter = adapter

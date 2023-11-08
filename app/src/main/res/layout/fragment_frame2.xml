@@ -18,10 +18,25 @@
         android:textColor="@color/white"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/add"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/add"
+        android:elevation="10dp"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="5dp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/btn_background"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/baseline_add_24"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintStart_toEndOf="@id/txtGpio"
+        app:layout_constraintEnd_toEndOf="@id/btnNext"
+        app:layout_constraintTop_toTopOf="@id/txtGpio" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn"
@@ -61,20 +76,28 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="40dp"
         android:orientation="vertical"
         tools:itemCount="5"
         tools:listitem="@layout/raw_item"
+        app:layout_constrainedHeight="true"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/btn"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.90"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNext"
         android:layout_width="100dp"
         android:layout_height="35dp"
-        android:layout_marginTop="45dp"
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="35dp"
         android:background="@drawable/btn_shadow_bg"
@@ -88,8 +111,7 @@
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constrainedWidth="true"
-        app:layout_constraintVertical_bias="1"
-        app:layout_constraintTop_toBottomOf="@id/recycler"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

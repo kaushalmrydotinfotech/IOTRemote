@@ -11,10 +11,12 @@ import com.rydot.iotRemote.customSwitch.OnToggledListener
 import com.rydot.iotRemote.model.SwitchModel
 import com.rydot.iotRemote.customSwitch.ToggleableView
 
-class Frame2Adapter(var context: Context, private var list:ArrayList<SwitchModel>):RecyclerView.Adapter<Frame2Adapter.ViewHolder>() {
+class Frame2Adapter(var context: Context, private var list:ArrayList<SwitchModel>,
+                    private val onDelete:(SwitchModel)->Unit):RecyclerView.Adapter<Frame2Adapter.ViewHolder>() {
     class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val img: ImageView = itemView.findViewById(R.id.imgOnOff)
         val switch: ToggleableView = itemView.findViewById(R.id.toggle)
+        val delete:ImageView = itemView.findViewById(R.id.imgDelete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -48,5 +50,9 @@ class Frame2Adapter(var context: Context, private var list:ArrayList<SwitchModel
             }
 
         })
+
+        holder.delete.setOnClickListener {
+            onDelete.invoke(list[position])
+        }
     }
 }
