@@ -48,10 +48,10 @@ class Frame2 : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = Frame2Adapter(requireContext(), arrayListOf(), onDelete = {
+       /* adapter = Frame2Adapter(requireContext(), arrayListOf(), onDelete = {
 
         })
-        binding.recycler.adapter = adapter
+        binding.recycler.adapter = adapter*/
         var list:ArrayList<SwitchModel> = arrayListOf()
         binding.add.setOnClickListener {
             addGpioDialog(list)
@@ -80,46 +80,46 @@ class Frame2 : Fragment() {
     }
 
 
-    @SuppressLint("NotifyDataSetChanged")
-    private fun addGpioDialog(list:ArrayList<SwitchModel> = arrayListOf()){
-        val dialog = Dialog(requireContext())
-        dialog.setContentView(R.layout.gpio_add_layout)
-        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        dialog.setCancelable(false)
+        @SuppressLint("NotifyDataSetChanged")
+        private fun addGpioDialog(list:ArrayList<SwitchModel> = arrayListOf()){
+            val dialog = Dialog(requireContext())
+            dialog.setContentView(R.layout.gpio_add_layout)
+            dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            dialog.setCancelable(false)
 
-        val edtId: EditText = dialog.findViewById(R.id.edtId)
-        val edtMessage: EditText = dialog.findViewById(R.id.edtMessage)
-        val btnSubmit:Button = dialog.findViewById(R.id.btnSubmit)
-        val imgCancel:ImageView = dialog.findViewById(R.id.imgCancel)
+            val edtId: EditText = dialog.findViewById(R.id.edtId)
+            val edtMessage: EditText = dialog.findViewById(R.id.edtMessage)
+            val btnSubmit:Button = dialog.findViewById(R.id.btnSubmit)
+            val imgCancel:ImageView = dialog.findViewById(R.id.imgCancel)
 
-        btnSubmit.setOnClickListener {
-            val inputMethodManager =
-                requireContext().getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
-            if (TextUtils.isEmpty(edtId.text)){
-                Toast.makeText(requireContext(),"Id is Require",Toast.LENGTH_SHORT).show()
+            btnSubmit.setOnClickListener {
+                val inputMethodManager =
+                    requireContext().getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
+                if (TextUtils.isEmpty(edtId.text)){
+                    Toast.makeText(requireContext(),"Id is Require",Toast.LENGTH_SHORT).show()
+                }
+                else if(TextUtils.isEmpty(edtMessage.text)){
+                    Toast.makeText(requireContext(),"Message is Require",Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    list.addAll(arrayListOf(SwitchModel(isOn = false, img = R.drawable.bulb_off)))
+                    SharedPrefs.setValue(requireContext(),"updateList",Gson().toJson(list)).toString()
+                    adapter = Frame2Adapter(requireContext(),list, onDelete = { it1->
+                       alertDialog(list,it1)
+                    })
+                    binding.recycler.adapter = adapter
+                    dialog.dismiss()
+                    Log.e(javaClass.simpleName, "addGpioDialog: $list")
+                }
             }
-            else if(TextUtils.isEmpty(edtMessage.text)){
-                Toast.makeText(requireContext(),"Message is Require",Toast.LENGTH_SHORT).show()
+            imgCancel.setOnClickListener {
+             dialog.dismiss()
             }
-            else{
-                list.addAll(arrayListOf(SwitchModel(isOn = false, img = R.drawable.bulb_off)))
-                SharedPrefs.setValue(requireContext(),"updateList",Gson().toJson(list)).toString()
-                adapter = Frame2Adapter(requireContext(),list, onDelete = { it1->
-                   alertDialog(list,it1)
-                })
-                binding.recycler.adapter = adapter
-                dialog.dismiss()
-                Log.e(javaClass.simpleName, "addGpioDialog: $list")
-            }
+
+            dialog.show()
+
         }
-        imgCancel.setOnClickListener {
-         dialog.dismiss()
-        }
-
-        dialog.show()
-
-    }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun alertDialog(list: ArrayList<SwitchModel>, it:SwitchModel){
