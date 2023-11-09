@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.iotremote.R
 import com.rydot.iotRemote.model.SwitchModel
 
-class Frame3Adapter(private var list: ArrayList<SwitchModel>): RecyclerView.Adapter<Frame3Adapter.ViewHolder>() {
+class Frame3Adapter(private var list: ArrayList<SwitchModel>,val onClick:(SwitchModel)->Unit): RecyclerView.Adapter<Frame3Adapter.ViewHolder>() {
     class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
       var edtNumber: EditText = itemView.findViewById(R.id.edt)
       var btn:Button = itemView.findViewById(R.id.edtBtn)
@@ -38,12 +38,16 @@ class Frame3Adapter(private var list: ArrayList<SwitchModel>): RecyclerView.Adap
         }
 
 
+        holder.btn.setOnClickListener {
+            onClick.invoke(list[position])
+        }
+
         holder.edtNumber.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 obj.number = s.toString()
-                Log.e(javaClass.simpleName, "onTextChanged: $s")
+                Log.e(javaClass.simpleName, "onTextChanged: ${obj.number}")
             }
         })
     }

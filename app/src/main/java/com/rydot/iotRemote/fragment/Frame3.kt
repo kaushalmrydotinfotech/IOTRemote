@@ -12,6 +12,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.rydot.iotRemote.adapter.Frame3Adapter
 import com.rydot.iotRemote.model.SwitchModel
+import com.rydot.iotRemote.utils.SharedPrefs
 
 
 class Frame3 : Fragment() {
@@ -37,7 +38,9 @@ private lateinit var adapter: Frame3Adapter
         val data: ArrayList<SwitchModel> =
             Gson().fromJson(args.list, object : TypeToken<ArrayList<SwitchModel>>() {}.type)
 
-        adapter = Frame3Adapter(data)
+        adapter = Frame3Adapter(data, onClick = {
+            SharedPrefs.setValue(requireContext(),"updateList",Gson().toJson(data)).toString()
+        })
         binding.recycler.adapter = adapter
 
     }

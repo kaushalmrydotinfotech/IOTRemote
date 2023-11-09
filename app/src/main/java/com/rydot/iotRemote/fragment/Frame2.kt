@@ -22,10 +22,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.iotremote.R
 import com.example.iotremote.databinding.FragmentFrame2Binding
 import com.google.gson.Gson
+import com.google.gson.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.rydot.iotRemote.adapter.Frame2Adapter
 import com.rydot.iotRemote.model.SwitchModel
 import com.rydot.iotRemote.utils.SharedPrefs
+import org.json.JSONArray
+import org.json.JSONObject
 
 
 class Frame2 : Fragment() {
@@ -55,6 +58,7 @@ class Frame2 : Fragment() {
         var list:ArrayList<SwitchModel> = arrayListOf()
         binding.add.setOnClickListener {
             addGpioDialog(list)
+
         }
 
 
@@ -67,12 +71,20 @@ class Frame2 : Fragment() {
                  })
                  binding.recycler.adapter = adapter
              }
+            else{
+                 adapter =  Frame2Adapter(requireContext(), list, onDelete = {
+                     alertDialog(list,it)
+                 })
+                 binding.recycler.adapter = adapter
+             }
 
 
 
 
 
         binding.btnNext.setOnClickListener {
+            val v1:JSONArray = JSONArray(Gson().toJson(list))
+            Log.e(javaClass.simpleName, "v1: $v1")
             SharedPrefs.setValue(requireContext(),"updateList",Gson().toJson(list)).toString()
             Log.e(javaClass.simpleName, "list: "+ SharedPrefs.getValue(requireContext(),"updateList","").toString())
             findNavController().navigate(Frame2Directions.actionFrame2ToFrame3(SharedPrefs.getValue(requireContext(),"updateList","").toString()))
@@ -103,12 +115,8 @@ class Frame2 : Fragment() {
                     Toast.makeText(requireContext(),"Message is Require",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    list.addAll(arrayListOf(SwitchModel(isOn = false, img = R.drawable.bulb_off)))
+                    list.add(SwitchModel(isOn = false, img = R.drawable.bulb_off, gpioId = edtId.text.toString()))
                     SharedPrefs.setValue(requireContext(),"updateList",Gson().toJson(list)).toString()
-                    adapter = Frame2Adapter(requireContext(),list, onDelete = { it1->
-                       alertDialog(list,it1)
-                    })
-                    binding.recycler.adapter = adapter
                     dialog.dismiss()
                     Log.e(javaClass.simpleName, "addGpioDialog: $list")
                 }

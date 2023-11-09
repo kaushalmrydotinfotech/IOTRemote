@@ -2,7 +2,7 @@ package com.rydot.iotRemote.model
 
 import java.util.Objects
 
-data class SwitchModel(var isOn:Boolean = false, var img:Int = 0,var number:String = "")
+data class SwitchModel(var isOn:Boolean = false, var img:Int = 0,var number:String = "",var gpioId:String = "")
 
 
 class SwitchModel1 {
